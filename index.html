@@ -9,8 +9,38 @@
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
         ym(101465667, "init", { trackLinks:true });
     </script>
-    <!-- Редирект -->
-    <meta http-equiv="refresh" content="0.5; url=https://2gis.ru/makhachkala/geo/70000001087705719">
 </head>
-<body></body>
+<body>
+    <script>
+        let appOpened = false;
+        const deepLink = 'twogis://ymap?action=show_shop&id=YMllM'; // Уточните схему и параметры!
+
+        // Пытаемся открыть приложение
+        window.location.href = deepLink;
+
+        // Отслеживаем успешный переход в приложение
+        window.addEventListener('blur', () => {
+            appOpened = true;
+        });
+
+        // Резервный редирект через 500 мс
+        setTimeout(() => {
+            if (!appOpened) {
+                window.location.href = 'https://go.2gis.com/YMllM';
+            }
+        }, 500);
+    </script>
+
+    <!-- Кнопка для ручного открытия -->
+    <a href="twogis://ymap?action=show_shop&id=YMllM" 
+       style="display: none; padding: 10px; background: #2c3e50; color: white; text-align: center;" 
+       id="openAppLink">Открыть в приложении 2GIS</a>
+    <script>
+        setTimeout(() => {
+            if (!appOpened) {
+                document.getElementById('openAppLink').style.display = 'block';
+            }
+        }, 100);
+    </script>
+</body>
 </html>
