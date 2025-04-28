@@ -9,8 +9,16 @@
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
         ym(101465667, "init", { trackLinks:true });
     </script>
-    <!-- Редирект -->
-    <meta http-equiv="refresh" content="0.5; url=https://go.2gis.com/YMllM">
 </head>
-<body></body>
+<body>
+    <script>
+        // Пытаемся открыть приложение через deep link
+        window.location.href = 'twogis://ymap'; // Используйте актуальную схему 2GIS
+
+        // Если приложение не установлено, через 0.5 сек переходим на веб-версию
+        setTimeout(function() {
+            window.location.href = 'https://go.2gis.com/YMllM';
+        }, 500);
+    </script>
+</body>
 </html>
