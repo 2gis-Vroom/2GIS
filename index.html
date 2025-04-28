@@ -12,38 +12,13 @@
 </head>
 <body>
     <script>
-        let appOpened = false;
-        const deepLink = 'https://2gis.ru/makhachkala/geo/70000001087705719'; // Уточните схему и параметры!
+        // Пытаемся открыть приложение через deep link
+        window.location.href = 'https://2gis.ru/makhachkala/geo/70000001087705719'; // Используйте актуальную схему 2GIS
 
-        // Пытаемся открыть приложение
-        window.location.href = deepLink;
-
-        // Отслеживаем успешный переход в приложение
-        window.addEventListener('blur', () => {
-            appOpened = true;
-        });
-
-        // Резервный редирект через 500 мс
-        setTimeout(() => {
-            if (!appOpened) {
-                window.location.href = 'https://2gis.ru/makhachkala/geo/70000001087705719';
-            }
+        // Если приложение не установлено, через 0.5 сек переходим на веб-версию
+        setTimeout(function() {
+            window.location.href = 'https://go.2gis.com/YMllM';
         }, 500);
-    </script>
-
-    <!-- Кнопка для ручного открытия -->
-    <a href="https://2gis.ru/makhachkala/geo/70000001087705719" 
-       style="display: none; padding: 10px; background: #2c3e50; color: white; text-align: center;" 
-       id="openAppLink">Открыть в приложении 2GIS</a>
-    <script>
-        setTimeout(() => {
-            if (!appOpened) {
-                document.getElementById('openAppLink').style.display = 'block';
-            }
-        }, 100);
     </script>
 </body>
 </html>
-
-
-
